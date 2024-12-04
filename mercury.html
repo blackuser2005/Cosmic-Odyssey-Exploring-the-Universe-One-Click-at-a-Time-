@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercury - Solar System Exploration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1d2b64, #f8cdda);
+            color: white;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to right, #ff6a00, #ee0979, #ff0099);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradient 3s infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 0;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .planet-info {
+            background: rgba(30, 40, 50, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: slideIn 1s forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .planet-info:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInImage 1s forwards;
+        }
+
+        @keyframes slideInImage {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            background-color: #1a2a3a;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        footer p {
+            font-size: 1.2em;
+            margin: 0;
+            color: #dcdcdc;
+        }
+
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+
+        .parallax {
+            position: relative;
+            overflow: hidden;
+            background-image: url('https://example.com/space-background.jpg');
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .parallax-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 4em;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <header>
+        <h1>Mercury - Solar System Exploration</h1>
+    </header>
+
+    <div class="parallax">
+        <div class="parallax-content">
+            <h2>Explore Mercury</h2>
+            <p>The closest planet to the Sun!</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="planet-info" id="planet-info">
+            <p>Loading data about Mercury...</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Solar System Exploration | Designed by Akshat</p>
+    </footer>
+
+    <script>
+        async function fetchMercuryData() {
+            const apiUrl = 'https://api.le-systeme-solaire.net/rest/bodies/mercury';
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+
+                const mercuryData = `
+                    <h3>Mercury</h3>
+                    <p><strong>Mass:</strong> ${data.mass.massValue} × 10^${data.mass.massExponent} kg</p>
+                    <p><strong>Mean Radius:</strong> ${data.meanRadius} km</p>
+                    <p><strong>Gravity:</strong> ${data.gravity} m/s²</p>
+                    <p><strong>Density:</strong> ${data.density} g/cm³</p>
+                    <p><strong>Atmosphere:</strong> ${data.atmosphere || "No significant atmosphere"}</p>
+                    <p><strong>Orbital Period:</strong> ${data.sideralOrbit} days</p>
+                    <p><strong>Day Length:</strong> ${data.sideralRotation} hours</p>
+                    <p><strong>Discovery Date:</strong> Known since ancient times</p>
+                    <p><strong>Distance from the Sun:</strong> 57.91 million km</p>
+                    <p><strong>Surface Temperature Range:</strong> -173°C to 427°C</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Mercury_(planet)" target="_blank">Read more on Wikipedia</a></p>
+                `;
+
+                // Adding an image from NASA's public domain collection
+                const imageUrl = 'Mercury.jpg'; // Mercury image from disk
+                const planetImage = `
+                    <img src="${imageUrl}" alt="Mercury Image">
+                `;
+
+                document.getElementById('planet-info').innerHTML = mercuryData + planetImage;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('planet-info').innerHTML = `<p>Sorry, there was an error loading the data.</p>`;
+            }
+        }
+
+        window.onload = fetchMercuryData;
+    </script>
+</body>
+</html>

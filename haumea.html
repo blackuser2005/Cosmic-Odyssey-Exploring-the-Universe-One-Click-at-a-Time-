@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Haumea</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #4b6cb7, #182848);
+            color: #e0f7fa;
+            text-align: center;
+        }
+
+        header {
+            background-color: #283593;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #ffca28;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        section {
+            padding: 50px 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #ffca28;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        img {
+            margin: 20px 0;
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+            animation: zoomIn 2s ease;
+        }
+
+        footer {
+            background-color: #283593;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            background-color: #ffca28;
+            color: #283593;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffa000;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Discover Haumea</h1>
+    </header>
+
+    <section>
+        <h2>Haumea: The Elliptical Wonder</h2>
+        <img src="haumea.png" alt="Haumea">
+        <p>
+            Haumea, a dwarf planet beyond Neptune, is known for its unique elongated shape, caused by its rapid rotation. 
+            It has two moons, Hiʻiaka and Namaka, named after Hawaiian goddesses.
+        </p>
+        <p>
+            Haumea’s icy surface and distinctive ring system make it one of the most intriguing objects in the Kuiper Belt. 
+            Its rapid rotation period is just 3.9 hours, the fastest of any known large object in the solar system.
+        </p>
+        <button onclick="goBack()">Go Back</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Solar System Exploration | Designed by Akshat</p>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

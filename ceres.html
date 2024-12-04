@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Ceres</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #3e5151, #decba4);
+            color: #1c1c1c;
+            text-align: center;
+        }
+
+        header {
+            background-color: #495867;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #f4a261;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        section {
+            padding: 50px 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #2a9d8f;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        img {
+            margin: 20px 0;
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+            animation: zoomIn 2s ease;
+        }
+
+        footer {
+            background-color: #495867;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.5);
+            color: #f4a261;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            background-color: #2a9d8f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #21867a;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Discover Ceres</h1>
+    </header>
+
+    <section>
+        <h2>The Dwarf Planet Ceres</h2>
+        <img src="ceres.jpg" alt="Ceres">
+        <p>
+            Ceres is the largest object in the asteroid belt between Mars and Jupiter, making up nearly 40% of its mass. 
+            This dwarf planet was the first asteroid discovered, in 1801, and is named after the Roman goddess of agriculture.
+        </p>
+        <p>
+            Ceres has a rocky core and an icy mantle, and recent observations suggest the presence of water vapor, 
+            hinting at the possibility of subsurface oceans. Its surface is dotted with craters and mysterious bright spots, 
+            believed to be deposits of salt left behind by evaporating water.
+        </p>
+        <p>
+            As a celestial body, Ceres provides scientists with insights into the formation of planets and the early solar system.
+        </p>
+        <button onclick="goBack()">Go Back</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Solar System Exploration | Designed by Akshat</p>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

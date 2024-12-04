@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Makemake</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #ff9800, #e65100);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        header {
+            background-color: #d84315;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #ffee58;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        section {
+            padding: 50px 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #ffee58;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        img {
+            margin: 20px 0;
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+            animation: zoomIn 2s ease;
+        }
+
+        footer {
+            background-color: #d84315;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            background-color: #ffee58;
+            color: #d84315;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #fdd835;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Discover Makemake</h1>
+    </header>
+
+    <section>
+        <h2>Makemake: The Icy Dwarf</h2>
+        <img src="makemake.jpg" alt="Makemake">
+        <p>
+            Makemake, named after the Rapa Nui fertility god, is a bright dwarf planet in the Kuiper Belt. 
+            It was discovered in 2005 and has a thin atmosphere that freezes when it moves farther from the Sun.
+        </p>
+        <p>
+            Makemake’s surface is covered with methane ice, giving it a reddish appearance. 
+            It is one of the largest known objects beyond Neptune and provides clues about the early solar system.
+        </p>
+        <button onclick="goBack()">Go Back</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Solar System Exploration | Designed by Akshat</p>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

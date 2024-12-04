@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars - Solar System Exploration</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff4500, #800000);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(50, 0, 0, 0.8);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 0;
+            color: #f0e68c;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .planet-info {
+            background: rgba(100, 20, 20, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .planet-info:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #2f3e4e;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            font-size: 1.2em;
+            margin: 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mars - The Red Planet</h1>
+    </header>
+
+    <section>
+        <div class="planet-info" id="planet-info">
+            <p>Loading data about Mars...</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Solar System Exploration | Designed by Akshat</p>
+    </footer>
+
+    <script>
+        async function fetchMarsData() {
+            const apiUrl = 'https://api.le-systeme-solaire.net/rest/bodies/mars';
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+
+                const marsData = `
+                    <h3>Mars</h3>
+                    <p><strong>Mass:</strong> ${data.mass.massValue} ${data.mass.massExponent} kg</p>
+                    <p><strong>Diameter:</strong> ${data.meanRadius * 2} km</p>
+                    <p><strong>Gravity:</strong> ${data.gravity} m/s²</p>
+                    <p><strong>Discovery Date:</strong> Known since ancient times</p>
+                    <p><strong>Moons:</strong> ${data.moons ? data.moons.map(moon => moon.moon).join(', ') : 'None'}</p>
+                    <p><strong>Day Length:</strong> 24.6 Earth hours</p>
+                    <p><strong>Year Length:</strong> 687 Earth days</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Mars" target="_blank">Read more on Wikipedia</a></p>
+                `;
+
+                // Adding an image for Mars
+                const imageUrl = 'mars.png';
+                const planetImage = `
+                    <img src="${imageUrl}" alt="Mars Image">
+                `;
+
+                document.getElementById('planet-info').innerHTML = marsData + planetImage;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('planet-info').innerHTML = `<p>Sorry, there was an error loading the data.</p>`;
+            }
+        }
+
+        window.onload = fetchMarsData;
+    </script>
+</body>
+</html>
